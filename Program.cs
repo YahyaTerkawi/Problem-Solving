@@ -1,0 +1,27 @@
+﻿static class program
+{
+
+    static int DigitFrequency(long number , int digit)
+    {
+        int reminder = 0;
+        int frequency = 0;
+
+        while (number > 0)
+        {
+            reminder =(int) (number % 10);
+            number /= 10;
+            if(reminder == digit)
+                frequency++;
+        }
+
+
+
+        return frequency;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine(DigitFrequency(2333333333999993,9));
+        Console.ReadKey();
+    }
+}
