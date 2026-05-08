@@ -1,0 +1,38 @@
+﻿static class program 
+{
+
+
+    static long SumOfDigits(long num)
+    {
+        long sum = 0;
+
+        if (num == 0) return 0;
+
+        if (num < 0)
+            num *= -1;
+
+        while (num > 0)
+        {
+            sum += num % 10;
+            num /= 10;
+        }
+
+        return sum;
+
+    }
+
+    static void Main(string[] args)
+    {
+        Console.Write("enter a number to calculate the sum of digits: ");
+
+        long num;
+
+        while (!long.TryParse(Console.ReadLine(), out num))
+        {
+            Console.WriteLine("enter a valid number");
+        }
+
+        Console.WriteLine($"the sum is : {SumOfDigits(num)}");
+    }
+
+}
