@@ -1,0 +1,23 @@
+﻿class program
+{
+
+    static void PrintNumberPattern(int num)
+    {
+        for(int i = 1; i <= num;i++)
+        {
+            for(int j = 1; j<= i; j++)
+            {
+                Console.Write(i);
+            }
+            Console.WriteLine();
+        }
+    }
+
+
+    static void Main(string[] args)
+    {
+
+        PrintNumberPattern(9);
+        Console.ReadKey();
+    }
+}
