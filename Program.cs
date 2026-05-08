@@ -1,0 +1,58 @@
+﻿
+static class program
+{
+
+    static bool IsPerfectNumber(int number)
+    {
+        int SumDivisors = 0;
+        int n = number / 2;
+
+        for(int i = 1; i<=n; i++)
+        {
+            if(number % i ==0)
+                SumDivisors+=i;
+        }
+
+        return SumDivisors == number;
+    }
+
+    static List<int> PerfectNumbersFrom1ToN(int N)
+    {
+        List<int> perfects = new();
+
+        for (int i = 1; i <= N; i++)
+        {
+            if (IsPerfectNumber(i))
+            {
+                perfects.Add(i);
+            }
+        }
+
+        return perfects;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.Write("Enter a positive integer number to print al perfect numbers from 1 to it: ");
+        int num;
+
+        while(!int.TryParse(Console.ReadLine(),out num) || num <=0)
+        {
+            Console.WriteLine("enter a valid number");
+        }
+
+
+        List<int> perfects = PerfectNumbersFrom1ToN(num);
+
+        if (perfects.Count == 0)
+            Console.WriteLine($"there is no any perfect number between 1 and {num}");
+        else
+        {
+            Console.Write("Perfect Numbers:");
+            foreach(int perfect in perfects)
+            {
+                Console.Write($"  {perfect}");
+            }
+        }
+    }
+}
