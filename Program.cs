@@ -1,0 +1,54 @@
+﻿static class program
+{
+
+    static List<string> ReverseDigits(long num)
+    {
+        bool IsNegative = num < 0;
+        List<string> digits = new();
+
+        if(num == 0)
+        {
+           digits.Add("0");
+           return digits;
+        }
+
+        if (IsNegative)
+            num *= -1;
+           
+
+        while (num >= 1)
+        {
+            digits.Add((num%10).ToString());
+            num /= 10;
+        }
+
+        if (IsNegative)
+            digits.Add("-");
+
+        return digits;
+    }
+
+
+    static void Main(string[] args)
+    {
+        Console.Write("enter a number to print reversed digits: ");
+
+        long num;
+
+        while(!long.TryParse(Console.ReadLine(),out num))
+        {
+            Console.WriteLine("enter a valid number");
+        }
+
+        List<string> digits = ReverseDigits(num);
+
+        Console.Write("reversed digits:");
+
+        foreach (string d in digits)
+        {
+            Console.Write($" {d}");
+        }
+
+        Console.ReadKey();
+    }
+}
