@@ -1,0 +1,69 @@
+﻿static class program
+{
+
+    static string GenerateRandomWord(int WordLength)
+    {
+        string Word = "";
+
+        Random random = new Random();
+
+        
+
+        for (int i = 1; i <= WordLength ; i++)
+        {
+            Word += (char)random.Next(65, 91);
+        }
+
+
+        return Word;
+    }
+
+
+    static string GenerateKey(int WordLentgh , int KeyLength)
+    {
+        string Key = "";
+
+
+        for(int i = 1; i<KeyLength; i++)
+        {
+            Key += GenerateRandomWord(WordLentgh);
+            Key += "-";
+        }
+
+        Key += GenerateRandomWord(WordLentgh);
+
+
+        return Key;
+    }
+
+    static List<string> GenerateNKeys(int KeysCount)
+    {
+        List<string> Keys = new();
+
+        for(int i = 1; i<= KeysCount; i++)
+        {
+            Keys.Add($"[{i}] -> {GenerateKey(4, 4)}");
+        }
+
+
+        return Keys;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("enter the number of keys to generate");
+        int count = 0;
+
+        while(!int.TryParse(Console.ReadLine(),out count) || count<=0)
+        {
+            Console.WriteLine("enter a valid number");
+        }
+
+        List<string> keys = GenerateNKeys(count);
+
+        foreach(string key in keys)
+        {
+            Console.WriteLine(key);
+        }
+    }
+}
